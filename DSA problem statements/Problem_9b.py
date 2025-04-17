@@ -1,5 +1,4 @@
 def generate_pseudo_magic_block():
-    # A 3x3 block where row/column sums = 15, but diagonal sums can differ
     return [
         [4, 5, 6],
         [6, 5, 4],
@@ -20,7 +19,7 @@ def print_grid(grid):
     for row in grid:
         print(" ".join(str(num) for num in row))
 
-n = 6  # You can change this to any n >= 3
+n = 6  
 pseudo_magic_square = tile_pseudo_magic_square(n)
 print(f"\n{n}x{n} Pseudo-Magic Square (3x3 blocks):")
 print_grid(pseudo_magic_square)
