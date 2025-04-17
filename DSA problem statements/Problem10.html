@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Single-Elimination Tournament Calculator</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f3f4f6;
+padding: 40px;
+text-align: center;
+}
+input, button {
+padding: 10px;
+font-size: 16px;
+margin: 10px;
+}
+.result {
+margin-top: 20px;
+font-size: 18px;
+background: white;
+display: inline-block;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+</style>
+</head>
+<body>
+<h1>Tournament Calculator</h1>
+<p>Enter number of players </p>
+<input type="number" id="players" min="2" step="1" />
+<button onclick="calculate()">Calculate</button>
+<div class="result" id="output"></div>
+<script>
+function calculate() {
+const n = parseInt(document.getElementById('players').value);
+const output = document.getElementById('output');
+if (isNaN(n) || n < 2) {
+output.innerHTML = "Please enter a number greater than or equal to 2.";
+return;
+}
+// Check if n is power of 2
+const isPowerOfTwo = (n & (n - 1)) === 0;
+const totalMatches = n - 1;
+const rounds = Math.floor(Math.log2(n));
+const secondBestMatches = rounds - 1;
+output.innerHTML = `
+<strong>Results for ${n} players:</strong><br><br>
+Total matches to find the winner: <strong>${totalMatches}</strong><br>
+Number of rounds: <strong>${rounds}</strong><br>
+Extra matches to find second-best: <strong>${secondBestMatches >= 0 ? secondBestMatches : 0}</strong><br><br>
+${!isPowerOfTwo ? " Note: Since " + n + " is not a power of 2, actual rounds may vary due to byes." : ""}
+`;
+}
+</script>
+</body>
+</html>
+
+
+
