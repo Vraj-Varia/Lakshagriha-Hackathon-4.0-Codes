@@ -40,7 +40,6 @@ if (isNaN(n) || n < 2) {
 output.innerHTML = "Please enter a number greater than or equal to 2.";
 return;
 }
-// Check if n is power of 2
 const isPowerOfTwo = (n & (n - 1)) === 0;
 const totalMatches = n - 1;
 const rounds = Math.floor(Math.log2(n));
