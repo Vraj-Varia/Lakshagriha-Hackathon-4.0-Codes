@@ -1,7 +1,6 @@
 import time
 import os
 
-# Neighbor offsets (8 directions)
 NEIGHBORS = [(-1, -1), (-1, 0), (-1, 1),
              (0, -1),          (0, 1),
              (1, -1),  (1, 0), (1, 1)]
@@ -32,18 +31,16 @@ def next_generation(live_cells):
     
     return new_live_cells
 
-# === CONFIGURATIONS === #
 
 def get_block():
-    return {(0, 0), (0, 1), (1, 0), (1, 1)}  # Still life
+    return {(0, 0), (0, 1), (1, 0), (1, 1)}  
 
 def get_blinker():
-    return {(0, 0), (1, 0), (2, 0)}  # Oscillator
+    return {(0, 0), (1, 0), (2, 0)}  
 
 def get_glider():
-    return {(1, 0), (2, 1), (0, 2), (1, 2), (2, 2)}  # Spaceship
+    return {(1, 0), (2, 1), (0, 2), (1, 2), (2, 2)}  
 
-# === MAIN SIMULATION === #
 
 def simulate(config_func, generations=10, size=10):
     live_cells = config_func()
@@ -51,7 +48,6 @@ def simulate(config_func, generations=10, size=10):
         print_board(live_cells, gen, size)
         live_cells = next_generation(live_cells)
 
-# === RUN SIMULATIONS === #
 if __name__ == "__main__":
     print("Choose configuration to simulate:")
     print("1. Still Life (Block)")
