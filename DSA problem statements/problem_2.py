@@ -28,10 +28,8 @@ class CreditCardValidator:
     @staticmethod
     def validate_expiry_date(expiry_date):
         try:
-            # Ensure expiration date is in MM/YY format
             expiry = datetime.strptime(expiry_date, "%m/%y")
             
-            # Check if the expiration date is in the future
             if expiry < datetime.now():
                 return "Invalid: Card has expired."
             
